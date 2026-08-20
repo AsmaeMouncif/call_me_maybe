@@ -1,34 +1,22 @@
-import argparse
-from pathlib import Path
+import sys
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Function calling tool")
-    parser.add_argument(
-        "--functions_definition",
-        type=str,
-        default="data/input/functions_definition.json",
-    )
-    parser.add_argument(
-        "--input",
-        type=str,
-        default="data/input/function_calling_tests.json",
-    )
-    parser.add_argument(
-        "--output",
-        type=str,
-        default="data/output/function_calling_results.json",
-    )
-    return parser.parse_args()
+def parse_args():
+    functions_file = "data/input/functions_definition.json"
+    input_file = "data/input/function_calling_tests.json"
+    output_file = "data/output/function_calls.json"
+    for i, arg in enumerate(sys.argv):
+        if arg == "--functions_definition":
+            functions_file = sys.argv[i + 1]
+        if arg == "--input":
+            input_file = sys.argv[i + 1]
+        if arg == "--output":
+            output_file = sys.argv[i + 1]
+    return functions_file, input_file, output_file
 
 
-def main() -> None:
-    args = parse_args()
-    print("functions_definition:", args.functions_definition)
-    print("input:", args.input)
-    print("output:", args.output)
-    Path("data/output").mkdir(parents=True, exist_ok=True)
-
+def main():
+    pass
 
 if __name__ == "__main__":
     main()
