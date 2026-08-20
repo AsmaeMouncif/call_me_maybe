@@ -3,8 +3,8 @@ import sys
 
 def parse_args() -> tuple[str, str, str]:
     functions_definition = "data/input/functions_definition.json"
-    input_file = "data/input/function_calling_tests.json"
-    output_file = "data/output/function_calls.json"
+    input = "data/input/function_calling_tests.json"
+    output = "data/output/function_calls.json"
     known_flags = ["--functions_definition", "--input", "--output"]
     for i, arg in enumerate(sys.argv):
         if arg not in known_flags:
@@ -14,17 +14,21 @@ def parse_args() -> tuple[str, str, str]:
         if arg == "--functions_definition":
             functions_definition = sys.argv[i + 1]
         elif arg == "--input":
-            input_file = sys.argv[i + 1]
+            input = sys.argv[i + 1]
         elif arg == "--output":
-            output_file = sys.argv[i + 1]
-    return functions_definition, input_file, output_file
+            output = sys.argv[i + 1]
+    return functions_definition, input, output
 
 
 def main() -> None:
-    functions_definition, input_file, output_file = parse_args()
+    try:
+        functions_definition, input, output = parse_args()
+    except ValueError as e:
+        print(e, file=sys.stderr)
+        sys.exit(1)
     print(functions_definition)
-    print(input_file)
-    print(output_file)
+    print(input)
+    print(output)
 
 
 if __name__ == "__main__":
