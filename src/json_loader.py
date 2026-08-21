@@ -7,9 +7,6 @@ def load_json_file(path: str) -> Any:
     try:
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
-            if not content.strip():
-                raise ValueError(f"Empty JSON file: {path}")
-            return json.loads(content)
     except FileNotFoundError:
         print(f"File not found: {path}", file=sys.stderr)
         sys.exit(1)
@@ -19,6 +16,11 @@ def load_json_file(path: str) -> Any:
     except PermissionError:
         print(f"Permission denied: {path}", file=sys.stderr)
         sys.exit(1)
+    if not content.strip():
+        print(f"Empty JSON file: {path}")
+        sys.exit(1)
+    try:
+        return json.loads(content)
     except json.JSONDecodeError as e:
         print(f"Invalid JSON in {path}: {e}", file=sys.stderr)
         sys.exit(1)
