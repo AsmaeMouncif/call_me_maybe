@@ -26,9 +26,10 @@ def main() -> None:
     except ValueError as e:
         print(e, file=sys.stderr)
         sys.exit(1)
-    print(functions_definition)
-    print(input)
-    print(output)
+    functions = load_json_file(functions_definition)
+    prompts = load_json_file(input)
+    print(functions)
+    print(prompts)
 
 
 if __name__ == "__main__":
