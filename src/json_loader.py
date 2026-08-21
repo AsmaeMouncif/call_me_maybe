@@ -13,6 +13,9 @@ def load_json_file(path: str) -> Any:
     except FileNotFoundError:
         print(f"File not found: {path}", file=sys.stderr)
         sys.exit(1)
+    except IsADirectoryError:
+        print(f"Path is a directory, not a file: {path}", file=sys.stderr)
+        sys.exit(1)
     except json.JSONDecodeError as e:
         print(f"Invalid JSON in {path}: {e}", file=sys.stderr)
         sys.exit(1)
