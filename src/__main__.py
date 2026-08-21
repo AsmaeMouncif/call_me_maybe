@@ -24,11 +24,11 @@ def parse_args() -> tuple[str, str, str]:
 def main() -> None:
     try:
         functions_definition, input, output = parse_args()
+        functions = load_json_file(functions_definition)
+        prompts = load_json_file(input)
     except ValueError as e:
         print(e, file=sys.stderr)
         sys.exit(1)
-    functions = load_json_file(functions_definition)
-    prompts = load_json_file(input)
     print(functions)
     print(prompts)
 
