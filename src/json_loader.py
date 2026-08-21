@@ -17,7 +17,7 @@ def load_json_file(path: str) -> Any:
         print(f"Permission denied: {path}", file=sys.stderr)
         sys.exit(1)
     if not content.strip():
-        print(f"Empty JSON file: {path}")
+        print(f"Empty JSON file: {path}", file=sys.stder)
         sys.exit(1)
     try:
         return json.loads(content)
