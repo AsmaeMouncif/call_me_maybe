@@ -9,7 +9,7 @@ def load_json_file(path: str) -> Any:
             content = f.read()
             if not content.strip():
                 raise ValueError(f"Empty JSON file: {path}")
-            return json.load(content)
+            return json.loads(content)
     except FileNotFoundError:
         print(f"File not found: {path}", file=sys.stderr)
         sys.exit(1)
