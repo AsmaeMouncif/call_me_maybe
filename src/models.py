@@ -1,3 +1,4 @@
+from typing import Any
 from pydantic import BaseModel
 
 
@@ -16,11 +17,11 @@ class FunctionDefinition(BaseModel):
     returns: ReturnSpec
 
 
-class Prompt(BaseModel):
+class PromptEntry(BaseModel):
     prompt: str
 
 
-class Fun(BaseModel):
+class FunctionCallResult(BaseModel):
     prompt: str
     name: str
     parameters: dict[str, Any]
