@@ -1,4 +1,4 @@
-from .json_loader import load_json_file
+from .json_loader import load_json_file, parse_models
 from .models import FunctionDefinition, PromptEntry
 import sys
 
