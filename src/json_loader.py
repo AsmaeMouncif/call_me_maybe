@@ -32,7 +32,7 @@ T = TypeVar("T", bound=BaseModel)
 
 def parse_models(raw_data: Any, model: Type[T], source: str) -> list[T]:
     if not isinstance(raw_data, list):
-        print(f"Excepted a JSON array in {source}", file=sys.stderr)
+        print(f"Expected a JSON array in {source}", file=sys.stderr)
         sys.exit(1)
     result: list[T] = []
     try:
