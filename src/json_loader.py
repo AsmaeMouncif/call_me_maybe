@@ -1,6 +1,7 @@
 import json
 import sys
-from typing import Any
+from typing import Any, Type, TypeVar
+from pydantic import BaseModel, ValidationError
 
 
 def load_json_file(path: str) -> Any:
@@ -25,7 +26,23 @@ def load_json_file(path: str) -> Any:
         print(f"Invalid JSON in {path}: {e}", file=sys.stderr)
         sys.exit(1)
 
-def parse_models(raw_data):
+
+T = TypeVar("T", bound=BaseModel)
+
+
+def parse_models(raw_data: Any, model: Type[T], source: str) -> list[T]:
     if not isinstance(raw_data, list):
-        print("Excepted a JSON array", file=sys.stderr)
+        print(f"Excepted a JSON array in {source}", file=sys.stderr)
         sys.exit(1)
+    result: list[T] = []
+    try:
+        for item in raw_data:
+            parsed_item = model(**item)
+            result.append(parsed_item)
+    except ValidationError as e:
+        print(f"Validation error in {source}: {e}", file=sys.stderr)
+        sys.exit(1)
+    except TypeError as e:
+        print(f"Invalid item structure in {source}: {e}", file=sys.stderr)
+        sys.exit(1)
+    return result
