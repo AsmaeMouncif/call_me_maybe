@@ -24,3 +24,8 @@ def load_json_file(path: str) -> Any:
     except json.JSONDecodeError as e:
         print(f"Invalid JSON in {path}: {e}", file=sys.stderr)
         sys.exit(1)
+
+def parse_models(raw_data):
+    if not isinstance(raw_data, list):
+        print("Excepted a JSON array", file=sys.stderr)
+        sys.exit(1)

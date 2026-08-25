@@ -1,4 +1,5 @@
 from .json_loader import load_json_file
+from .models import FunctionDefinition, PromptEntry
 import sys
 
 
@@ -27,8 +28,10 @@ def main() -> None:
     except ValueError as e:
         print(e, file=sys.stderr)
         sys.exit(1)
-    functions = load_json_file(functions_definition)
-    prompts = load_json_file(input_file)
+    raw_functions = load_json_file(functions_definition)
+    raw_prompts = load_json_file(input_file)
+    functions = parse_models(raw_functions, FunctionDefinition, functions_definition)
+    prompts = parse_models(raw_prompts, PromptEntry, input_file)
     print(functions)
     print(prompts)
 
