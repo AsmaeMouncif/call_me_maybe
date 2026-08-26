@@ -30,8 +30,12 @@ def main() -> None:
         sys.exit(1)
     raw_functions = load_json_file(functions_definition)
     raw_prompts = load_json_file(input_file)
-    functions = parse_models(raw_functions, FunctionDefinition, functions_definition)
-    prompts = parse_models(raw_prompts, PromptEntry, input_file)
+    functions = parse_models(
+        raw_functions, FunctionDefinition, functions_definition
+    )
+    prompts = parse_models(
+        raw_prompts, PromptEntry, input_file
+    )
     print(functions)
     print(prompts)
 
