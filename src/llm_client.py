@@ -8,7 +8,7 @@ def load_model() -> Small_LLM_Model:
 
 def load_vocab(model: Small_LLM_Model) -> dict[str, int]:
     path = model.get_path_to_vocab_file()
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         vocab: dict[str, int] = json.load(f)
     return vocab
 
