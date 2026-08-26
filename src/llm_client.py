@@ -12,5 +12,6 @@ def load_vocab(model: Small_LLM_Model) -> dict[str, int]:
         vocab: dict[str, int] = json.load(f)
     return vocab
 
+
 def build_reverse_vocab(vocab: dict[str, int]) -> dict[int, str]:
     return {v: k for k, v in vocab.items()}
