@@ -17,7 +17,10 @@ def load_vocab(model: Small_LLM_Model) -> dict[str, int]:
         print(f"Invalid JSON in vocab file {path}: {e}", file=sys.stderr)
         sys.exit(1)
     if not isinstance(vocab, dict):
-        print(f"Unexpected vocab format in {path}: expected an object", file=sys.stderr)
+        print(
+            f"Unexpected vocab format in {path}: expected an object",
+            file=sys.stderr,
+        )
         sys.exit(1)
     return vocab
 
