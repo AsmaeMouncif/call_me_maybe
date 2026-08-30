@@ -1,5 +1,8 @@
 from .json_loader import load_json_file, parse_models
 from .models import FunctionDefinition, PromptEntry
+from .vocab import load_vocab, build_reverse_vocab
+from .output_writer import write_results
+from llm_sdk import Small_LLM_Model
 import sys
 
 
@@ -36,8 +39,11 @@ def main() -> None:
     prompts = parse_models(
         raw_prompts, PromptEntry, input_file
     )
-    print(functions)
-    print(prompts)
+    model = Small_LLM_Model()
+    vocab = load_vocab(model)
+    reverse_vocab = build_reverse_vocab(vocab)
+    results = []
+    write_results(results, output)
 
 
 if __name__ == "__main__":
