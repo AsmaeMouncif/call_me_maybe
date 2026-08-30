@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 class ParameterSpec(BaseModel):
     type: str
+    description: str | None = None
 
 
 class ReturnSpec(BaseModel):
