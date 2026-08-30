@@ -15,7 +15,7 @@ def write_results(results: list[FunctionCallResult], output_path: str) -> None:
     for result in results:
         data.append(result.model_dump())
     try:
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
     except OSError as e:
         print(f"Could not write output file {path}: {e}", file=sys.stderr)
