@@ -19,4 +19,9 @@ def _wrap(system: str, request: str) -> str:
 
 
 def describe_function(function: FunctionDefinition) -> str:
-    
+    signature = (
+
+    )
+
+spec
+for name, spec in function.parameters
