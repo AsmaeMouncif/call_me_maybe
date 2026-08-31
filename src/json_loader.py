@@ -36,7 +36,7 @@ def parse_models(raw_data: Any, model: Type[T], source: str) -> list[T]:
     for index, item in enumerate(raw_data):
         if not isinstance(item, dict):
             raise InputError(
-                f"Item {index} in {source} ia a {type(item).__name__}, "
+                f"Item {index} in {source} is a {type(item).__name__}, "
                 "expected a JSON object"
             )
         try:
