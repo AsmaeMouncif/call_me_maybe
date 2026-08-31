@@ -1,4 +1,4 @@
-
+from .models import FunctionDefinition
 
 
 SELECT_INSTRUCTION = (
@@ -7,11 +7,16 @@ SELECT_INSTRUCTION = (
 ARGUMENT_INSTRUCTION = (
     "Extract this function's arguments from the request. JSON only."
 )
+THINK_BLOCK = ""
 
 
 def _wrap(system: str, request: str) -> str:
     return (
+        f"<|im_start|>system\n{system}<|im_end|>\n"
         f"<|im_start|>user\n{request}<|im_end|>\n"
-        f"<|im_start|>user\n{request}<|im_end|>\n"
-        f"<|im_start|>user\n{request}<|im_end|>\n"
+        f"<|im_start|>assistant\n{THINK_BLOCK}"
     )
+
+
+def describe_function(function: FunctionDefinition) -> str:
+    
