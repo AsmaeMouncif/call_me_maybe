@@ -11,6 +11,7 @@ ARGUMENT_INSTRUCTION = (
 
 def _wrap(system: str, request: str) -> str:
     return (
-        f"<|im_start|>user
-Hi there!<|im_end|>"
+        f"<|im_start|>user\n{request}<|im_end|>\n"
+        f"<|im_start|>user\n{request}<|im_end|>\n"
+        f"<|im_start|>user\n{request}<|im_end|>\n"
     )
