@@ -31,7 +31,7 @@ def load_json_file(path: str) -> Any:
 
 def parse_models(raw_data: Any, model: Type[T], source: str) -> list[T]:
     if not isinstance(raw_data, list):
-        print(f"Expected a JSON array in {source}")
+        raise InputError(f"Expected a JSON array in {source}")
     result: list[T] = []
     for index, item in enumerate(raw_data):
         if not isinstance(item, dict):
