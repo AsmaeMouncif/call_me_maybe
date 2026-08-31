@@ -32,3 +32,9 @@ def build_prompt(
     return _wrap(f"{SELECT_INSTRUCTION}\n{catalogue}, request")
 
 
+def build_prompt(
+    function: list[FunctionDefinition], request: str
+) -> str:
+    return _wrap(
+        f"{ARGUMENT_INSTRUCTION}\n{describe_function(function)}", request
+)
