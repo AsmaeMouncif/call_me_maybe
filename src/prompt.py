@@ -23,5 +23,4 @@ def describe_function(function: FunctionDefinition) -> str:
 
     )
 
-spec
-for name, spec in function.parameters
+for name, spec in function.parameters.items()
