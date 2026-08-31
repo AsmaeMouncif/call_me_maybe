@@ -28,4 +28,7 @@ def _wrap(system: str, request: str) -> str:
 def build_prompt(
     functions: list[FunctionDefinition], request: str
 ) -> str:
+    catalogue = "\n".join(describe_function(fn) for fn in functions)
+    return _wrap(f"{SELECT_INSTRUCTION}\n{catalogue}, request")
+
 
