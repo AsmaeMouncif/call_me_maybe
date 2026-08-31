@@ -39,10 +39,10 @@ def parse_models(raw_data: Any, model: Type[T], source: str) -> list[T]:
                 f"Item {index} in {source} ia a {type(item).__name__}, "
                 "expected a JSON object"
             )
-    try:
-        result.append(model(**item))
-    except ValidationError as exc:
-        raise InputError(
-            f"Validation error in {source}, item {index}: {exc}"
-        ) from exc
+        try:
+            result.append(model(**item))
+        except ValidationError as exc:
+            raise InputError(
+                f"Validation error in {source}, item {index}: {exc}"
+            ) from exc
     return result
