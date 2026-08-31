@@ -23,3 +23,9 @@ def _wrap(system: str, request: str) -> str:
         f"<|im_start|>user\n{request}<|im_end|>\n"
         f"<|im_start|>assistant\n{THINK_BLOCK}"
     )
+
+
+def build_prompt(
+    functions: list[FunctionDefinition], request: str
+) -> str:
+
