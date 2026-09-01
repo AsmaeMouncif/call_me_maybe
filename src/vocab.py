@@ -40,7 +40,3 @@ def bytes_to_unicode() -> dict[int, str]:
             shift += 1
     return {byte: chr(code) for byte, code in zip(printable, mapped)}
 
-
-def decode_token(token: str, byte_decoder: dict[str, int]) -> str:
-    pass
-
