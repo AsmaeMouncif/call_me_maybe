@@ -37,4 +37,4 @@ def build_argument_prompt(
 ) -> str:
     return _wrap(
         f"{ARGUMENT_INSTRUCTION}\n{describe_function(function)}", request
-)
+    )
