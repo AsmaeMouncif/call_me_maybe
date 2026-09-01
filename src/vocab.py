@@ -35,4 +35,9 @@ def bytes_to_unicode() -> dict[int, str]:
         + list(range(ord("®"), ord("ÿ") + 1))
     )
     mapped: list[int] = printable[:]
-    
+    shift = 0
+    for byte in range(256):
+        if byte not in printable:
+            printable.append(byte)
+            mapped.append(256 + shift)
+            shift += 1
