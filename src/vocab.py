@@ -29,4 +29,10 @@ def build_reverse_vocab(vocab: dict[str, int]) -> dict[int, str]:
     return {v: k for k, v in vocab.items()}
 
 def bytes_to_unicode() -> dict[int, str]:
-    Printable
+    printable: list[int] = (
+        list(range(ord("!"), ord("~") + 1))
+        + list(range(ord("¡"), ord("¬") + 1))
+        + list(range(ord("®"), ord("ÿ") + 1))
+    )
+    mapped: list[int] = printable[:]
+    
