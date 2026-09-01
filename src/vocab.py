@@ -41,3 +41,4 @@ def bytes_to_unicode() -> dict[int, str]:
             printable.append(byte)
             mapped.append(256 + shift)
             shift += 1
+    return {byte: chr(code) for byte, code in zip(printable, mapped)}
