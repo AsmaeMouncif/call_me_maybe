@@ -8,4 +8,4 @@ def pick_from_ids(logits: list[float], allowed: Iterable[int]) -> int:
     if candidates.size == 0:
         raise GenerationError("No token is available at this step")
 
-float_array = np.array(my_list, dtype=np.float32)
+float_array = np.array(logits, dtype=np.float32)
