@@ -9,7 +9,7 @@ import sys
 def parse_args() -> tuple[str, str, str]:
     functions_definition = "data/input/functions_definition.json"
     input_file = "data/input/function_calling_tests.json"
-    output = "data/output/function_calls.json"
+    output = "function_calling_results.json"
     known_flags = ["--functions_definition", "--input", "--output"]
     for i, arg in enumerate(sys.argv):
         if arg not in known_flags:
