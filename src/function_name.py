@@ -9,6 +9,6 @@ def get_function_names(functions: list[FunctionDefinition]) -> list[str]:
     return names
 
 
-def build_funcion_candidate(model: Small_LLM_Model, function_name: str) -> list[int]:
+def build_function_candidate(model: Small_LLM_Model, function_name: str) -> list[int]:
     text = '{"name": "' + function_name + '"}'
-    return model.decode(text).squeeze(0).tolist()
+    return model.encode(text).squeeze(0).tolist()
