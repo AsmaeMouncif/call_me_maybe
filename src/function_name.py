@@ -22,11 +22,11 @@ def build_function_candidates(model: Small_LLM_Model, function_names: list[str])
     return candidates
 
 
-def get_valid_next_tokens(candidates: list[list[int]], generate_ids: list[int]) -> set[int]:
+def get_valid_next_tokens(candidates: list[list[int]], generated_ids: list[int]) -> set[int]:
     valid_token_ids: set[int] = set()
     for candidate in candidates:
-        prefix_length = len(generate_ids)
-        if candidate[:prefix_length] == generate_ids:
+        prefix_length = len(generated_ids)
+        if candidate[:prefix_length] == generated_ids:
             if len(candidate) > prefix_length:
                 valid_token_ids.add(candidate[prefix_length])
     return valid_token_ids
