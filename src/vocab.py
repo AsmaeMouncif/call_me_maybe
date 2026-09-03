@@ -24,19 +24,3 @@ def load_vocab(model: Small_LLM_Model) -> dict[str, int]:
         sys.exit(1)
     return vocab
 
-
-def bytes_to_unicode() -> dict[int, str]:
-    printable: list[int] = (
-        list(range(ord("!"), ord("~") + 1))
-        + list(range(ord("¡"), ord("¬") + 1))
-        + list(range(ord("®"), ord("ÿ") + 1))
-    )
-    mapped: list[int] = printable[:]
-    shift = 0
-    for byte in range(256):
-        if byte not in printable:
-            printable.append(byte)
-            mapped.append(256 + shift)
-            shift += 1
-    return {byte: chr(code) for byte, code in zip(printable, mapped)}
-
