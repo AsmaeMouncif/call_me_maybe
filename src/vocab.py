@@ -23,4 +23,3 @@ def load_vocab(model: Small_LLM_Model) -> dict[str, int]:
         )
         sys.exit(1)
     return vocab
-
