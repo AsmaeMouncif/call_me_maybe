@@ -6,6 +6,7 @@ def get_function_names(functions: list[FunctionDefinition]) -> list[str]:
     names = []
     for function in functions:
         names.append(function.name)
+    names.append("NO_FUNCTION")
     return names
 
 

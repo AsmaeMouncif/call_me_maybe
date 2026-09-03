@@ -2,7 +2,9 @@ from .models import FunctionDefinition
 
 
 SELECT_INSTRUCTION = (
-    "Choose the one function that answers the request. JSON only."
+    "Choose the one function that answers the request. "
+    "if none of the available functions can answer the request, "
+    "Choose NO_FUNCTION. JSON only."
 )
 ARGUMENT_INSTRUCTION = (
     "Extract this function's arguments from the request. JSON only."
