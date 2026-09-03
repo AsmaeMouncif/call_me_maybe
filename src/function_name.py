@@ -39,14 +39,16 @@ def select_next_token(logits: list[float], valid_tokens: set[int]) -> int:
 def generate_function_name(model: Small_LLM_Model, prompt: str, functions: list[FunctionDefinition]) -> str:
     input_ids = model.encode(build_prompt(functions, prompt)).squeeze(0).tolist()
     function_names = get_function_names(functions)
-    candidates = build_function_candidates(model, function_names)
+    candidates = build_function_candidates(model, functions)
     generated_ids: list[int] = []
     while True:
-        valid__tokens = get_valid_next_tokens(candidates, generated_ids)
+        valid_tokens = get_valid_next_tokens(candidates, generated_ids)
+        if not valid_tokens:
+            break
         logits = model.get_logits_from_input_ids(input_ids)
-        next_token = select_next_token(logits, valid__tokens)
+        next_token = select_next_token(logits, valid_tokens)
         generated_ids.append(next_token)
         input_ids.append(next_token)
         if generated_ids in candidates:
             break
-        return model.decode(generated_ids)
+    return model.decode(generated_ids)
