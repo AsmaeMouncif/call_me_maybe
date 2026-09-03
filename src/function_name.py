@@ -28,5 +28,5 @@ def get_valid_next_tokens(candidates: list[list[int]], generate_ids: list[int]) 
     for candidate in candidates:
         if candidate[:prefix_length] == generate_ids:
             if len(candidate) > prefix_length:
-                valid_token_ids.add(candidate[prefix_length:])
+                valid_token_ids.add(candidate[prefix_length])
     return valid_token_ids
