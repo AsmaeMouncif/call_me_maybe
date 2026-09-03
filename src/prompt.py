@@ -3,7 +3,7 @@ from .models import FunctionDefinition
 
 SELECT_INSTRUCTION = (
     "Choose the one function that best answers the request. "
-    "if none of the available functions can answer the request, "
+    "If none of the available functions can answer the request, "
     "choose NO_FUNCTION. JSON only."
 )
 ARGUMENT_INSTRUCTION = (
