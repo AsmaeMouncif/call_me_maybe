@@ -30,3 +30,7 @@ def get_valid_next_tokens(candidates: list[list[int]], generated_ids: list[int])
             if prefix_length < len(candidate):
                 valid_token_ids.add(candidate[prefix_length])
     return valid_token_ids
+
+
+def select_next_token(logits: list[float], valid_token: set[int]) -> int:
+    return max(valid_token key=lambda token_id: logits[token_id])
