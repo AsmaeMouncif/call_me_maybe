@@ -1,5 +1,6 @@
 from llm_sdk import Small_LLM_Model
 from .models import FunctionDefinition
+from .prompt import build_prompt
 
 
 def get_function_names(functions: list[FunctionDefinition]) -> list[str]:
