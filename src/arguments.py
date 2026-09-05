@@ -13,3 +13,6 @@ def get_number_end_tokens(is_last_parameter: bool) -> set[int]:
         return {92}
     return {11}
 
+
+def get_decimal_point_tokens() -> set[int]:
+    return {13}
