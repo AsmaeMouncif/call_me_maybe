@@ -1,6 +1,5 @@
 from .json_loader import load_json_file, parse_models
 from .models import FunctionDefinition, PromptEntry
-from .vocab import load_vocab, build_reverse_vocab
 from .output_writer import write_results
 from llm_sdk import Small_LLM_Model
 import sys
@@ -9,7 +8,7 @@ import sys
 def parse_args() -> tuple[str, str, str]:
     functions_definition = "data/input/functions_definition.json"
     input_file = "data/input/function_calling_tests.json"
-    output = "function_calling_results.json"
+    output = "data/output/function_calling_results.json"
     known_flags = ["--functions_definition", "--input", "--output"]
     for i, arg in enumerate(sys.argv):
         if arg not in known_flags:
@@ -40,8 +39,6 @@ def main() -> None:
         raw_prompts, PromptEntry, input_file
     )
     model = Small_LLM_Model()
-    vocab = load_vocab(model)
-    reverse_vocab = build_reverse_vocab(vocab)
     results = []
     write_results(results, output)
 
