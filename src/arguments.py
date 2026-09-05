@@ -16,3 +16,20 @@ def get_number_end_tokens(is_last_parameter: bool) -> set[int]:
 
 def get_decimal_point_tokens() -> set[int]:
     return {13}
+
+
+def get_number_valid_tokens(state: str, is_last_parameter: bool = False) -> set[int]:
+    if state == "start":
+        return get_number_start_tokens()
+    if state == "digits":
+        return (
+            get_number_digit_tokens()
+            | get_decimal_point_tokens()
+            | get_number_end_tokens(is_last_parameter)
+        )
+    if state == "decimal":
+        return (
+            get_number_digit_tokens()
+            | get_number_end_tokens(is_last_parameter)
+        )
+    return set()
