@@ -1,3 +1,4 @@
+from llm_sdk import Small_LLM_Model
 
 
 def get_number_start_tokens() -> set[int]:
@@ -33,3 +34,8 @@ def get_number_valid_tokens(state: str, is_last_parameter: bool = False) -> set[
             | get_number_end_tokens(is_last_parameter)
         )
     return set()
+
+
+def encode_fragment(model: Small_LLM_Model, text: str) -> list[int]:
+    return model.encode(text).squeeze(0).tolist()
+
